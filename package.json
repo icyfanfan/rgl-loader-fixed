@@ -1,0 +1,22 @@
+{
+  "name": "rgl-loader-fixed",
+  "version": "1.0.0",
+  "description": "regular模板去注释、空格、图片地址处理预解析",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icyfanfan/rgl-loader-fixed.git"
+  },
+  "author": "icy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/icyfanfan/rgl-loader-fixed/issues"
+  },
+  "peerDependencies": {
+    "loader-utils": "^0.2.15"
+  },
+  "homepage": "https://github.com/icyfanfan/rgl-loader-fixed#readme"
+}
