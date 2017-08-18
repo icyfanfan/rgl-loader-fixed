@@ -10,13 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/icyfanfan/rgl-loader-fixed.git"
   },
-  "author": "icy",
+  "author": "icyfanfan",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/icyfanfan/rgl-loader-fixed/issues"
-  },
-  "peerDependencies": {
-    "loader-utils": "^0.2.15"
   },
   "homepage": "https://github.com/icyfanfan/rgl-loader-fixed#readme"
 }
