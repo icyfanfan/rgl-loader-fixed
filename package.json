@@ -1,6 +1,6 @@
 {
   "name": "rgl-loader-fixed",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "regular模板去注释、空格、图片地址处理预解析",
   "main": "index.js",
   "scripts": {
