@@ -1,9 +1,11 @@
 var loaderUtils = require("loader-utils");
+var minify = require('html-minifier').minify;
 
+      
 module.exports = function(content) {
     this.cacheable && this.cacheable();
 
-    var query = {};
+    var query = loaderUtils.parseQuery(this.query) || {};
     var tpl = content || '';
 
     tpl = cleanRedundantCode(tpl, query);// remove redundant code
@@ -20,17 +22,30 @@ function cleanRedundantCode(str, opts){
         rglComments = comments.rgl;
 
     if(minimize && typeof str === 'string'){
-        var SINGLE_SPACE = '';
+        var SINGLE_SPACE = ' ';
         var EMPTY = '';
 
         // remove html-comments <!-- xxx -->
-        str = !htmlComments ? str.replace(/<!-[\s\S]*?-->/g, EMPTY) : str;
+        // str = !htmlComments ? str.replace(/<!-[\s\S]*?-->/g, EMPTY) : str;
+        str = str.replace(/<!-[\s\S]*?-->/g, EMPTY);
 
         // remove regular-comments {! xxx !}
-        str = !rglComments ? str.replace(/{![\s\S]*?!}/g, EMPTY) : str;
+        // str = !rglComments ? str.replace(/{![\s\S]*?!}/g, EMPTY) : str;
+        str = str.replace(/{![\s\S]*?!}/g, EMPTY);
 
-        // 暴力全局替换\s，副作用：内容里面有带空格或回车的字符串会被替换截掉
-        str = str.replace(/[\s]{2,}/g, SINGLE_SPACE);
+        // 去除html标签之间的空格和换行
+        str = str.replace(/.>[\s]+<./g, function(i){
+            return i.replace(/[\s]/g,'');
+        });
+        
+        // 去掉html标签和rgl标签之间的空格和换行
+        str = str.replace(/.>[\s]+{[#|/]/g, function(i){
+            return i.replace(/[\s]/g,'');
+        });
+        // 去掉rgl标签和html标签之间的空格和换行
+        str = str.replace(/.}[\s]+<./g, function(i){
+            return i.replace(/[\s]/g,'');
+        });
 
         str = str.trim();
     }
