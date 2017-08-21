@@ -1,7 +1,7 @@
 {
   "name": "rgl-loader-fixed",
-  "version": "1.0.1",
-  "description": "regular模板去注释、空格、图片地址处理预解析",
+  "version": "1.0.2",
+  "description": "regular模板去注释、空格、换行等",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
